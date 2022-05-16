@@ -10,7 +10,7 @@ public class Screen extends JPanel implements ActionListener, KeyListener, Mouse
     private int rozmiarY, rozmiarX;
     private int ROZMIAR_KAFELKI = 50;
     private Swiat swiat;
-    private JButton button;
+    private JButton newTurnB, saveB, loadB;
 
 
     Screen(Swiat swiat, Organizm[][] mapa, int rozmiarY, int rozmiarX){
@@ -18,15 +18,33 @@ public class Screen extends JPanel implements ActionListener, KeyListener, Mouse
         this.rozmiarY = rozmiarY;
         this.rozmiarX = rozmiarX;
         this.swiat = swiat;
-        //Screen s = this;
-        button = new JButton("nowa tura");
-        this.add(button);
 
-        button.addActionListener(e -> {
-            swiat.wykonajTure("n");
-            button.setFocusable(false);
+        newTurnB = new JButton("nowa tura");
+        saveB = new JButton("zapisz");
+        loadB = new JButton("wczytaj");
+
+        this.add(newTurnB);
+        this.add(saveB);
+        this.add(loadB);
+
+        saveB.addActionListener(e -> {
+            swiat.zapiszDoPliku();
+            saveB.setFocusable(false);
             repaint();
+        });
+        newTurnB.addActionListener(e -> {
+            swiat.wykonajTure("n");
+            newTurnB.setFocusable(false);
+            repaint();
+        });
+        loadB.addActionListener(e -> {
+            swiat.changeSwiat();
 
+            JComponent comp = (JComponent) e.getSource();
+            Window win = SwingUtilities.getWindowAncestor(comp);
+            win.dispose();
+            loadB.setFocusable(false);
+            repaint();
         });
 
         addKeyListener(this);

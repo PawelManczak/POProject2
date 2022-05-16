@@ -153,7 +153,7 @@ public class Swiat {
 
     }
 
-    public Swiat(){
+    public void changeSwiat(){
         File myObj = new File("save.txt");
         Scanner myReader;
         try {
@@ -223,6 +223,8 @@ public class Swiat {
 
         setFrame();
     }
+
+
 }
 
 

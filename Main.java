@@ -12,11 +12,12 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        String command = scan.nextLine();
+        String command;
+        //String command = scan.nextLine();
         Swiat swiat;
 
-        command = scan.nextLine();
-        if(command.equals("1")) {
+        //command = scan.nextLine();
+        //if(command.equals("1")) {
 
             swiat = new Swiat(15, 5);
 
@@ -42,10 +43,10 @@ public class Main {
             swiat.dodajOrganizm(new Polozenie(6, 2), mlecz);
             swiat.dodajOrganizm(new Polozenie(7, 4), guarana);
             swiat.dodajOrganizm(new Polozenie(10, 4), barszczSosnowskiego);
-        }
+        /*}
         else {
          swiat = new Swiat();
-        }
+        }*/
 
 
         while(true){
